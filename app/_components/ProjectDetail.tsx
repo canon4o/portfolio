@@ -5,7 +5,7 @@ import {
   type ProjectDetailContent,
   type ProjectStatus,
 } from "../_types/project";
-import { GitHubIcon, WebsiteIcon } from "./ContactIcons";
+import { BackspaceIcon, GitHubIcon, WebsiteIcon } from "./ContactIcons";
 import ProjectPath from "./ProjectPath";
 import Tag from "./Tag";
 
@@ -41,10 +41,11 @@ export default function ProjectDetail({
   return (
     <div className="space-y-6">
       <Link
-        href="/projects"
-        className="inline-block font-mono text-sm text-zinc-500 transition-colors hover:text-accent"
+        href="/#projects"
+        className="inline-flex items-center gap-1.5 font-mono text-sm text-zinc-500 transition-colors hover:text-accent"
       >
-        <span className="text-accent">←</span> /projects
+        <BackspaceIcon className="h-4 w-4 text-accent" />
+        Back
       </Link>
 
       <div className="relative aspect-video w-full overflow-hidden rounded-md border border-zinc-200 bg-white">

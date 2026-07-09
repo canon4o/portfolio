@@ -2,17 +2,46 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import DirectoryPath from "./DirectoryPath";
 import Logo from "./Logo";
 
 const links = [
-  { path: "me", href: "/" },
-  { path: "projects", href: "/projects" },
-  { path: "contact-me", href: "/contact-me" },
+  { path: "me", href: "/#me" },
+  { path: "projects", href: "/#projects" },
+  { path: "contact-me", href: "/#contact-me" },
 ];
 
 export default function NavBar() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [activeSection, setActiveSection] = useState("me");
+
+  useEffect(() => {
+    if (!isHome) return;
+
+    const sections = links
+      .map(({ path }) => document.getElementById(path))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-20% 0px -70% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [isHome]);
 
   return (
     <nav className="border-b border-zinc-200">
@@ -20,8 +49,9 @@ export default function NavBar() {
         <Logo />
         <div className="flex gap-6 font-mono text-sm">
           {links.map(({ path, href }) => {
-            const isActive =
-              href === "/" ? pathname === "/" : pathname.startsWith(href);
+            const isActive = isHome
+              ? activeSection === path
+              : path === "projects" && pathname.startsWith("/projects");
 
             return (
               <Link
