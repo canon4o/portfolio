@@ -44,7 +44,7 @@ export default function NavBar() {
   }, [isHome]);
 
   return (
-    <nav className="border-b border-zinc-200">
+    <nav className="sticky top-0 z-50 border-b border-zinc-200 bg-zinc-50/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-6 py-4">
         <Logo />
         <div className="flex gap-6 font-mono text-sm">
