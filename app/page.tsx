@@ -8,9 +8,9 @@ import {
 } from "./_components/ContactIcons";
 
 const contactLinks = [
-  { label: "email", href: "mailto:hello@example.com", icon: EmailIcon },
+  { label: "email", href: "mailto:mail@devgeorgiev.com", icon: EmailIcon },
   { label: "LinkedIn", href: "https://linkedin.com", icon: LinkedInIcon },
-  { label: "GitHub", href: "https://github.com", icon: GitHubIcon },
+  { label: "GitHub", href: "https://github.com/canon4o/", icon: GitHubIcon },
 ];
 
 export default function Home() {
