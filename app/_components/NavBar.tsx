@@ -12,6 +12,20 @@ const links = [
   { path: "contact-me", href: "/#contact-me" },
 ];
 
+function scrollToSection(id: string) {
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  section.scrollIntoView({
+    behavior: prefersReducedMotion ? "instant" : "smooth",
+  });
+  window.history.pushState(null, "", `#${id}`);
+}
+
 export default function NavBar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -57,6 +71,12 @@ export default function NavBar() {
               <Link
                 key={href}
                 href={href}
+                onClick={(e) => {
+                  if (!isHome) return;
+                  e.preventDefault();
+                  scrollToSection(path);
+                  setActiveSection(path);
+                }}
                 className={
                   isActive
                     ? "font-semibold text-zinc-900 underline"
