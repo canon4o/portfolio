@@ -9,7 +9,7 @@ import {
 
 const contactLinks = [
   { label: "email", href: "mailto:mail@devgeorgiev.com", icon: EmailIcon },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: LinkedInIcon },
+  { label: "LinkedIn", href: "", icon: LinkedInIcon },
   { label: "GitHub", href: "https://github.com/canon4o/", icon: GitHubIcon },
 ];
 
