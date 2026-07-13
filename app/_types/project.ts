@@ -37,4 +37,4 @@ export type ProjectListingEntry = {
   readmore?: boolean;
 };
 
-export const DEFAULT_PROJECT_THUMBNAIL = "/projects/placeholder.svg";
+export const DEFAULT_PROJECT_THUMBNAIL = "/projects/placeholder-thumbnail.png";

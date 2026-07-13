@@ -18,6 +18,17 @@ export default function ChicaHermosaPage() {
       duration="2025 to now"
       status="active"
       stack={["WordPress", "WooCommerce", "PHP"]}
+      thumbnail="/projects/placeholder.png "
+      body={[
+        "ChicaHermosa is an e-commerce store that sells a variety of products. It is built on WordPress and WooCommerce and is hosted on a shared hosting provider.",
+        "I was responsible for the development of the store, including the creation of the product pages, the checkout process and the entire front-end of the store."
+      ]} 
+      technologyGroups={[
+        { label: "Backend", items: ["WordPress", "WooCommerce", "PHP"] },
+      ] as const}
+      links={{
+        website: "https://chicahermosa.bg",
+      }}
     />
   );
 }
