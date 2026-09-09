@@ -22,5 +22,5 @@ Let's connect and build something great together! 🚀
 
 ## 🔗 Connect with me
 
-* 🌐 Portfolio: https://portfolio-canon4o.vercel.app
+* 🌐 Portfolio: https://www.devgeorgiev.com/ 
 * 💼 LinkedIn: https://www.linkedin.com/in/plamen-georgiev-07337894
