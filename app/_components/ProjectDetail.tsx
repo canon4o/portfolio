@@ -15,7 +15,7 @@ const linkClassName =
 
 function StatusLabel({ status }: { status: ProjectStatus }) {
   const className =
-    status === "active" ? "text-accent" : "text-zinc-400 capitalize";
+    status === "active" ? "text-accent" : "text-zinc-500 capitalize";
 
   return <span className={className}>{status}</span>;
 }
@@ -43,6 +43,7 @@ export default function ProjectDetail({
   status,
   stack = [],
   body,
+  responsibilities,
   highlights,
   technologyGroups,
   closing,
@@ -51,7 +52,9 @@ export default function ProjectDetail({
   thumbnail,
 }: ProjectDetailContent) {
   const hasExtendedContent =
-    body?.length || highlights?.length || technologyGroups?.length || closing;
+    body?.length ||
+    responsibilities?.length ||
+    highlights?.length || technologyGroups?.length || closing;
 
   return (
     <div className="space-y-6">
@@ -63,7 +66,7 @@ export default function ProjectDetail({
         Back
       </Link>
 
-      <div className="relative aspect-video w-full overflow-hidden rounded-md border border-zinc-200 bg-white">
+      <div className="relative aspect-video w-full overflow-hidden rounded-md border border-zinc-200 bg-surface">
         <Image
           src={thumbnail ?? DEFAULT_PROJECT_THUMBNAIL}
           alt={`${name} preview`}
@@ -73,15 +76,14 @@ export default function ProjectDetail({
         />
       </div>
 
-      <div className="space-y-3">
-        <h1 className="font-mono text-2xl text-zinc-900">
-          <ProjectPath
-            slug={slug}
-            className="font-mono text-2xl text-zinc-900"
-          />
+      <div className="space-y-2">
+        <p className="font-mono text-sm text-zinc-500">
+          <ProjectPath slug={slug} className="font-mono text-sm text-zinc-500" />
+        </p>
+        <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
+          {name}
         </h1>
-        <p className="font-semibold text-zinc-900">{name}</p>
-        <p className="font-medium text-accent">{tagline}</p>
+        <p className="text-lg text-zinc-600">{tagline}</p>
         <p className="font-mono text-xs text-zinc-500">
           {role} · {duration} · <StatusLabel status={status} />
         </p>
@@ -91,7 +93,7 @@ export default function ProjectDetail({
         <p
           className={
             hasExtendedContent
-              ? "border-l-2 border-accent pl-4 text-lg leading-8 text-zinc-800"
+              ? "text-lg leading-8 text-zinc-800"
               : undefined
           }
         >
@@ -99,6 +101,19 @@ export default function ProjectDetail({
         </p>
 
         {body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+
+        {responsibilities && responsibilities.length > 0 && (
+          <section className="space-y-3">
+            <h2 className="font-mono text-sm font-medium text-zinc-900">
+              My Role
+            </h2>
+            <ul className="list-disc space-y-2 pl-5">
+              {responsibilities.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {highlights && highlights.length > 0 && (
           <section className="space-y-3">

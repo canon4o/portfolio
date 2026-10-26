@@ -1,96 +1,62 @@
+import Link from "next/link";
+import ContactLinks from "./_components/ContactLinks";
 import DirectoryPath from "./_components/DirectoryPath";
 import ProjectEntry from "./_components/ProjectEntry";
 import Tag from "./_components/Tag";
-import {
-  EmailIcon,
-  GitHubIcon,
-  LinkedInIcon,
-} from "./_components/ContactIcons";
-
-const contactLinks = [
-  { label: "email", href: "mailto:plamen91@gmail.com", icon: EmailIcon },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/plamen-georgiev-07337894",
-    icon: LinkedInIcon,
-  },
-  { label: "GitHub", href: "https://github.com/canon4o", icon: GitHubIcon },
-];
 
 export default function Home() {
   return (
     <>
       <section id="me" className="scroll-mt-20">
-        <h1 className="mb-2 font-mono text-2xl">
+        <p className="mb-3 font-mono text-sm text-zinc-500">
           <DirectoryPath path="me" />
+        </p>
+        <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">
+          Plamen Georgiev
         </h1>
-        <p className="mb-8 font-medium text-zinc-900">Plamen Georgiev</p>
+        <p className="mt-3 text-lg text-zinc-600">
+          Senior Software Engineer · backend systems &amp; cloud
+        </p>
 
-        <div className="space-y-6 leading-7 text-zinc-700">
-          <p className="border-l-2 border-accent pl-4 text-lg leading-8 text-zinc-800">
-            I&apos;m a{" "}
-            <span className="font-medium text-accent">
-              Senior Software Engineer
-            </span>{" "}
-            focused on building scalable backend systems and cloud-native
-            applications.
-          </p>
-
-          <div className="space-y-3">
-            <p>
-              I specialize in Python, backend architecture, distributed
-              systems, and cloud infrastructure (AWS, GCP). Likewise, I care
-              about designing systems that are simple, reliable, and easy to
-              evolve in applying the principles like{" "}
-              <span className="font-mono text-sm text-accent">SOLID</span>,{" "}
-              <span className="font-mono text-sm text-accent">DRY</span>, and{" "}
-              <span className="font-mono text-sm text-accent">
-                clean architecture
-              </span>{" "}
-              where they actually matter.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <Tag>Python</Tag>
-              <Tag>distributed systems</Tag>
-              <Tag>AWS</Tag>
-              <Tag>GCP</Tag>
-              <Tag>Kubernetes</Tag>
-              <Tag>Docker</Tag>
-              <Tag>Terraform</Tag>
-            </div>
-          </div>
-
+        <div className="mt-8 space-y-4 leading-7 text-zinc-700">
           <p>
-            Outside my main stack, I build end-to-end products. One example
-            is{" "}
-            <span className="rounded bg-accent/8 px-1.5 py-0.5 font-medium text-accent">
-              WalletHistory
-            </span>
-            - a personal finance platform I first built in 2020 with PHP 7,
-            MariaDB and a native Android app, and later rewrote from scratch
-            as a self-hostable Next.js, TypeScript and PostgreSQL app.
-          </p>
-
-          <p>
-            I work across the stack when needed, but my focus is always on
-            backend systems,{" "}
+            I build scalable backend systems and cloud-native applications
+            with Python, AWS and GCP. My focus is on{" "}
             <span className="font-medium text-zinc-900">API design</span>,
-            and{" "}
+            distributed systems and{" "}
             <span className="font-medium text-zinc-900">
-              long-term system maintainability
+              long-term maintainability
             </span>
-            .
+            : systems that are simple, reliable and easy to evolve, applying
+            SOLID, DRY and clean architecture where they actually matter.
           </p>
-
           <p>
-          When I&apos;m not engineering software, I&apos;m usually playing
-          chess, traveling, or playing board games with friends.
+            Outside my main stack, I build end-to-end products like{" "}
+            <Link
+              href="/projects/wallethistory"
+              className="font-medium text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+            >
+              WalletHistory
+            </Link>
+            , a personal finance platform I first built in 2020 with PHP and
+            Android, and later rewrote as a self-hostable Next.js and
+            PostgreSQL app. Away from the keyboard, I play chess, travel and
+            play board games with friends.
           </p>
-          <div className="flex flex-wrap gap-2 pt-1">
-            <Tag>chess</Tag>
-            <Tag>traveling</Tag>
-            <Tag>board games</Tag>
-          </div>
+        </div>
+
+        <div className="mt-6 flex flex-wrap gap-2">
+          <Tag>Python</Tag>
+          <Tag>distributed systems</Tag>
+          <Tag>AWS</Tag>
+          <Tag>GCP</Tag>
+          <Tag>Kubernetes</Tag>
+          <Tag>Docker</Tag>
+          <Tag>Terraform</Tag>
+        </div>
+
+        <div className="mt-8">
+          <ContactLinks />
         </div>
       </section>
 
@@ -110,6 +76,7 @@ export default function Home() {
             role="Founder & Full-stack Developer"
             duration="2020 - present"
             status="active"
+            summary="Source-available finance tracker for budgets, goals and reports, hosted or self-hosted with Docker."
             thumbnail="/projects/wallethistory-thumbnail.png"
             order={1}
           />
@@ -120,6 +87,7 @@ export default function Home() {
             role="Full-stack Developer"
             duration="2010 - 2011"
             status="archived"
+            summary="Platform for creating, managing and solving crossword puzzles."
             thumbnail="/projects/kingscrosswords.png"
             order={0}
             readmore={false}
@@ -142,7 +110,7 @@ export default function Home() {
 
           <p>
             Whether you&apos;re looking for a{" "}
-            <span className="font-medium text-accent">
+            <span className="font-medium text-zinc-900">
               Senior Software Engineer
             </span>
             , want to talk about{" "}
@@ -169,22 +137,7 @@ export default function Home() {
             Let&apos;s build something great together.
           </p>
 
-          <div className="flex flex-wrap gap-4 font-mono text-sm">
-            {contactLinks.map(({ label, href, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                className="inline-flex items-center gap-1.5 text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
-                {...(href.startsWith("http") && {
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                })}
-              >
-                <Icon />
-                {label}
-              </a>
-            ))}
-          </div>
+          <ContactLinks />
         </div>
       </section>
     </>

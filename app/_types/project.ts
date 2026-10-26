@@ -24,6 +24,7 @@ export type ProjectDetailContent = {
   status: ProjectStatus;
   stack?: string[];
   body?: string[];
+  responsibilities?: string[];
   highlights?: string[];
   technologyGroups?: TechnologyGroup[];
   closing?: string;
@@ -42,6 +43,7 @@ export type ProjectListingEntry = {
   role: string;
   duration: string;
   status: ProjectStatus;
+  summary?: string;
   thumbnail?: string;
   order: number;
   readmore?: boolean;
