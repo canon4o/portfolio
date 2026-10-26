@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./_components/Footer";
 import NavBar from "./_components/NavBar";
+import { themeScript } from "./_components/themeScript";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,7 +33,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NavBar />
         <main className="mx-auto w-full max-w-2xl flex-1 px-6 py-8">

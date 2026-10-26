@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import DirectoryPath from "./DirectoryPath";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { path: "me", href: "/#me" },
@@ -61,7 +62,7 @@ export default function NavBar() {
     <nav className="sticky top-0 z-50 border-b border-zinc-200 bg-zinc-50/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-6 py-4">
         <Logo />
-        <div className="flex gap-6 font-mono text-sm">
+        <div className="flex items-center gap-6 font-mono text-sm">
           {links.map(({ path, href }) => {
             const isActive = isHome
               ? activeSection === path
@@ -87,6 +88,7 @@ export default function NavBar() {
               </Link>
             );
           })}
+          <ThemeToggle />
         </div>
       </div>
     </nav>

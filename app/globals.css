@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   --background: #fafafa;
   --foreground: #18181b;
@@ -10,28 +12,28 @@
 
 /*
  * Dark mode flips the zinc scale, so every zinc utility in the components
- * picks up its dark counterpart without needing a dark: variant.
+ * picks up its dark counterpart without needing a dark: variant. The theme
+ * script in the root layout sets data-theme from the saved choice or the
+ * system setting before the first paint.
  */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: oklch(14.1% 0.005 285.823);
-    --foreground: oklch(96.7% 0.001 286.375);
-    --surface: oklch(21% 0.006 285.885);
-    --accent: #cf8ee3;
-    color-scheme: dark;
+:root[data-theme="dark"] {
+  --background: oklch(14.1% 0.005 285.823);
+  --foreground: oklch(96.7% 0.001 286.375);
+  --surface: oklch(21% 0.006 285.885);
+  --accent: #cf8ee3;
+  color-scheme: dark;
 
-    --color-zinc-50: oklch(14.1% 0.005 285.823);
-    --color-zinc-100: oklch(21% 0.006 285.885);
-    --color-zinc-200: oklch(27.4% 0.006 286.033);
-    --color-zinc-300: oklch(37% 0.013 285.805);
-    --color-zinc-400: oklch(55.2% 0.016 285.938);
-    --color-zinc-500: oklch(70.5% 0.015 286.067);
-    --color-zinc-600: oklch(78% 0.012 286.1);
-    --color-zinc-700: oklch(87.1% 0.006 286.286);
-    --color-zinc-800: oklch(92% 0.004 286.32);
-    --color-zinc-900: oklch(96.7% 0.001 286.375);
-    --color-zinc-950: oklch(98.5% 0 0);
-  }
+  --color-zinc-50: oklch(14.1% 0.005 285.823);
+  --color-zinc-100: oklch(21% 0.006 285.885);
+  --color-zinc-200: oklch(27.4% 0.006 286.033);
+  --color-zinc-300: oklch(37% 0.013 285.805);
+  --color-zinc-400: oklch(55.2% 0.016 285.938);
+  --color-zinc-500: oklch(70.5% 0.015 286.067);
+  --color-zinc-600: oklch(78% 0.012 286.1);
+  --color-zinc-700: oklch(87.1% 0.006 286.286);
+  --color-zinc-800: oklch(92% 0.004 286.32);
+  --color-zinc-900: oklch(96.7% 0.001 286.375);
+  --color-zinc-950: oklch(98.5% 0 0);
 }
 
 @theme inline {
