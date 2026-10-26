@@ -23,6 +23,11 @@ export default function WalletHistoryPage() {
         "The new version covers the whole financial picture: cash, bank and card accounts with computed balances, income, expenses and transfers, recurring transactions, weekly or monthly budgets with spending pace and alerts, savings goals, and reports such as cash flow, spending by category, balance over time and forecasts. Households let family members share accounts and goals while keeping personal data personal.",
         "As the sole developer, I own everything from the data model and authentication to the release pipeline. The same code runs the hosted app and the official Docker image, which applies its own database migrations on startup.",
       ]}
+      responsibilities={[
+        "Led the project end-to-end as its sole developer.",
+        "Defined the scope, priorities and roadmap.",
+        "Planned, prioritized and executed all development tasks.",
+      ]}
       highlights={[
         "Rewrote the platform from PHP and Android into a single Next.js App Router application in TypeScript.",
         "Designed the PostgreSQL schema and migrations with Drizzle ORM, with Redis as an optional cache.",
@@ -33,14 +38,6 @@ export default function WalletHistoryPage() {
         "Localized the app in English, Bulgarian and Spanish, with light and dark themes and a mobile-first PWA.",
       ]}
       technologyGroups={[
-        {
-          label: "Project Lead & Tasks",
-          items: [
-            "Led the project end-to-end",
-            "Defined scope, priorities, and roadmap",
-            "Planned, prioritized, and executed development tasks",
-          ],
-        },
         {
           label: "Application",
           items: [
