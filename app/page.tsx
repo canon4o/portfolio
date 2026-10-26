@@ -8,9 +8,13 @@ import {
 } from "./_components/ContactIcons";
 
 const contactLinks = [
-  { label: "email", href: "mailto:mail@devgeorgiev.com", icon: EmailIcon },
-  { label: "LinkedIn", href: "", icon: LinkedInIcon },
-  { label: "GitHub", href: "https://github.com/canon4o/", icon: GitHubIcon },
+  { label: "email", href: "mailto:plamen91@gmail.com", icon: EmailIcon },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/plamen-georgiev-07337894",
+    icon: LinkedInIcon,
+  },
+  { label: "GitHub", href: "https://github.com/canon4o", icon: GitHubIcon },
 ];
 
 export default function Home() {
@@ -98,15 +102,6 @@ export default function Home() {
         <p className="mb-10 text-zinc-500">Selected work, newest first.</p>
 
         <div className="space-y-10">
-          <ProjectEntry
-            slug="chicahermosa"
-            name="ChicaHermosa"
-            tagline="E-Commerce store"
-            role="Wordpress Developer"
-            duration="2025 - present"
-            status="active"
-            order={2}
-          />
           <ProjectEntry
             slug="wallethistory"
             name="WalletHistory"

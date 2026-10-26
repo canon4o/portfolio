@@ -66,7 +66,7 @@ export default function WalletHistoryPage() {
       closing="WalletHistory demonstrates my ability to design, develop, and maintain a complete software product while working across multiple technologies and platforms, from backend services and database architecture to native mobile development."
       links={{
         website: "https://wallethistory.com",
-        github: "https://github.com/wallethistory",
+        github: "https://github.com/canon4o/wallethistory",
       }}
     />
   );
