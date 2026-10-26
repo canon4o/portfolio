@@ -5,6 +5,15 @@ export type TechnologyGroup = {
   items: string[];
 };
 
+export type PreviousVersion = {
+  title: string;
+  duration: string;
+  description: string;
+  body?: string[];
+  highlights?: string[];
+  technologyGroups?: TechnologyGroup[];
+};
+
 export type ProjectDetailContent = {
   slug: string;
   name: string;
@@ -18,6 +27,7 @@ export type ProjectDetailContent = {
   highlights?: string[];
   technologyGroups?: TechnologyGroup[];
   closing?: string;
+  previousVersion?: PreviousVersion;
   links?: {
     website?: string;
     github?: string;
