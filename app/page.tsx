@@ -66,8 +66,9 @@ export default function Home() {
             <span className="rounded bg-accent/8 px-1.5 py-0.5 font-medium text-accent">
               WalletHistory
             </span>
-            - a personal finance platform with a PHP 7 + MariaDB backend and
-            a native Android app built in Java and Kotlin.
+            - a personal finance platform I first built in 2020 with PHP 7,
+            MariaDB and a native Android app, and later rewrote from scratch
+            as a self-hostable Next.js, TypeScript and PostgreSQL app.
           </p>
 
           <p>

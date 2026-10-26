@@ -4,6 +4,7 @@ import {
   DEFAULT_PROJECT_THUMBNAIL,
   type ProjectDetailContent,
   type ProjectStatus,
+  type TechnologyGroup,
 } from "../_types/project";
 import { BackspaceIcon, GitHubIcon, WebsiteIcon } from "./ContactIcons";
 import ProjectPath from "./ProjectPath";
@@ -19,6 +20,19 @@ function StatusLabel({ status }: { status: ProjectStatus }) {
   return <span className={className}>{status}</span>;
 }
 
+function TechnologyGroups({ groups }: { groups: TechnologyGroup[] }) {
+  return groups.map((group) => (
+    <div key={group.label} className="space-y-2">
+      <h3 className="font-mono text-xs text-zinc-500">{group.label}</h3>
+      <div className="flex flex-wrap gap-2">
+        {group.items.map((item) => (
+          <Tag key={item}>{item}</Tag>
+        ))}
+      </div>
+    </div>
+  ));
+}
+
 export default function ProjectDetail({
   slug,
   name,
@@ -32,6 +46,7 @@ export default function ProjectDetail({
   highlights,
   technologyGroups,
   closing,
+  previousVersion,
   links,
   thumbnail,
 }: ProjectDetailContent) {
@@ -103,18 +118,7 @@ export default function ProjectDetail({
             <h2 className="font-mono text-sm font-medium text-zinc-900">
               Details
             </h2>
-            {technologyGroups.map((group) => (
-              <div key={group.label} className="space-y-2">
-                <h3 className="font-mono text-xs text-zinc-500">
-                  {group.label}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <Tag key={item}>{item}</Tag>
-                  ))}
-                </div>
-              </div>
-            ))}
+            <TechnologyGroups groups={technologyGroups} />
           </section>
         ) : (
           stack.length > 0 && (
@@ -127,6 +131,35 @@ export default function ProjectDetail({
         )}
 
         {closing && <p>{closing}</p>}
+
+        {previousVersion && (
+          <section className="space-y-4 border-t border-zinc-200 pt-6">
+            <div className="space-y-1">
+              <h2 className="font-mono text-sm font-medium text-zinc-900">
+                {previousVersion.title}
+              </h2>
+              <p className="font-mono text-xs text-zinc-500">
+                {previousVersion.duration} · <StatusLabel status="archived" />
+              </p>
+            </div>
+            <p>{previousVersion.description}</p>
+            {previousVersion.body?.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {previousVersion.highlights &&
+              previousVersion.highlights.length > 0 && (
+                <ul className="list-disc space-y-2 pl-5">
+                  {previousVersion.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
+            {previousVersion.technologyGroups &&
+              previousVersion.technologyGroups.length > 0 && (
+                <TechnologyGroups groups={previousVersion.technologyGroups} />
+              )}
+          </section>
+        )}
       </div>
 
       {links && (links.website || links.github) && (
